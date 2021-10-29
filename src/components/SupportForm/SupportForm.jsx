@@ -1,5 +1,16 @@
+import TextField from "@mui/material/TextField";
+
 function SupportForm() {
-    return <p>SupportForm!</p>;
+  return (
+    <>
+      <TextField
+        required
+        id="standard-basic"
+        label="SupportForm"
+        variant="standard"
+      />
+    </>
+  );
 }
 
 export default SupportForm;
