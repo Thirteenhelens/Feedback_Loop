@@ -1,14 +1,27 @@
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
 import TextField from "@mui/material/TextField";
+import { useDispatch, useSelector } from "react-redux";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 
 function FeelingForm() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const placeholder = useSelector((store) => store.placeholder);
+  const [feedback, setFeedback] = useState(placeholder.feedback);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(`Clicked Next`);
+
+    dispatch({
+      type: "ADD_INPUT",
+      payload: feedback,
+    });
+
     history.push("/understanding");
+    setFeedback("");
   };
 
   return (
@@ -20,10 +33,13 @@ function FeelingForm() {
         <TextField
           required
           type="number"
-          id="standard-basic"
-          label="FeelingForm"
+          value={feedback}
+          label="Feeling?"
           variant="standard"
+          id="standard-basic"
+          onChange={(e) => setFeedback(e.target.value)}
         />
+        <br />
         <Button
           type="submit"
           variant="outlined"
