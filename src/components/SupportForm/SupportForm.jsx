@@ -9,7 +9,7 @@ function SupportForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const feedback = useSelector((store) => store.feedback);
-  const [support, setSupport] = useState(feedback.support);
+  const [support, setSupport] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function SupportForm() {
     });
 
     setSupport("");
-    // history.push("/comment");
+    history.push("/comment");
   };
 
   return (
@@ -36,6 +36,7 @@ function SupportForm() {
           variant="standard"
           id="standard-basic"
           label="SupportForm"
+          helperText="Scale of 1-10"
           onChange={(e) => setSupport(e.target.value)}
         />
         <br />

@@ -9,7 +9,7 @@ function UnderstandingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const feedback = useSelector((store) => store.feedback);
-  const [understanding, setUnderstanding] = useState(feedback.understanding);
+  const [understanding, setUnderstanding] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function UnderstandingForm() {
     });
 
     setUnderstanding("");
-    // history.push("/support");
+    history.push("/support");
   };
 
   return (
@@ -36,6 +36,7 @@ function UnderstandingForm() {
           variant="standard"
           id="standard-basic"
           label="Understanding"
+          helperText="Scale of 1-10"
           onChange={(e) => setUnderstanding(e.target.value)}
         />
         <br />

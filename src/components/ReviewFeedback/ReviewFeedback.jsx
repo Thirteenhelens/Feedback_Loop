@@ -1,10 +1,7 @@
 import "./ReviewFeedback.css";
-import { useState } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
-import TextField from "@mui/material/TextField";
-import { useDispatch, useSelector } from "react-redux";
-import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+import { useSelector } from "react-redux";
 
 function ReviewFeedback() {
   const history = useHistory();
@@ -19,13 +16,13 @@ function ReviewFeedback() {
   return (
     <div>
       <h2>Review Your Feedback</h2>
-      <p>Feelings: {feedback.feeling}</p>
+      <p>Feeling: {feedback[0]}</p>
       <br />
-      <p>Understanding: {feedback.understanding}</p>
+      <p>Understanding: {feedback[1]}</p>
       <br />
-      <p>Support: {feedback.support}</p>
+      <p>Support: {feedback[2]}</p>
       <br />
-      <p>Comments: {feedback.comment}</p>
+      <p>Comments: {feedback[3]}</p>
       <br />
       <Button onClick={handleSubmit} type="submit" variant="contained">
         Submit
