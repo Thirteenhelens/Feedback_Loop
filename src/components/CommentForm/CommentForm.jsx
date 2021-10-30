@@ -20,7 +20,7 @@ function CommentForm() {
       payload: comment,
     });
 
-    // history.push("/understanding");
+    // history.push("/review");
     setComment("");
   };
 
