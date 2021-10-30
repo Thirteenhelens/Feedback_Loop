@@ -1,0 +1,17 @@
+.successTable {
+    outline: 5px;
+    margin-left: 75px;
+    margin-right: 75px;
+    margin-bottom: 25px;
+    outline-style: ridge;
+    outline-color:darkblue;
+}
+
+.restartFeedback {
+    padding: 8px;
+    outline: 5px;
+    margin-left: 400px;
+    margin-right: 400px;
+    outline-style: double;
+    outline-color: black;
+}
