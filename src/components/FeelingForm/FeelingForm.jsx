@@ -8,20 +8,20 @@ import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTo
 function FeelingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const placeholder = useSelector((store) => store.placeholder);
-  const [feedback, setFeedback] = useState(placeholder.feedback);
+  const feedback = useSelector((store) => store.feedback);
+  const [feeling, setFeeling] = useState(feedback.feeling);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Clicked Next`);
 
     dispatch({
-      type: "ADD_INPUT",
-      payload: feedback,
+      type: "ADD_FEELING",
+      payload: feeling,
     });
 
     history.push("/understanding");
-    setFeedback("");
+    setFeeling("");
   };
 
   return (
@@ -33,12 +33,13 @@ function FeelingForm() {
         <TextField
           required
           type="number"
-          value={feedback}
+          value={feeling}
           label="Feeling?"
           variant="standard"
           id="standard-basic"
-          onChange={(e) => setFeedback(e.target.value)}
+          onChange={(e) => setFeeling(e.target.value)}
         />
+        <br />
         <br />
         <Button
           type="submit"
