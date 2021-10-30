@@ -8,7 +8,6 @@ import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTo
 function UnderstandingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const feedback = useSelector((store) => store.feedback);
   const [understanding, setUnderstanding] = useState("");
 
   const handleSubmit = (e) => {

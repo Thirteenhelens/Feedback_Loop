@@ -8,7 +8,6 @@ import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTo
 function CommentForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const feedback = useSelector((store) => store.feedback);
   const [comment, setComment] = useState("");
 
   const handleSubmit = (e) => {

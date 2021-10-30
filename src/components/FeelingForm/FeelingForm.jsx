@@ -8,7 +8,6 @@ import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTo
 function FeelingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const feedback = useSelector((store) => store.feedback);
   const [feeling, setFeeling] = useState("");
 
   const handleSubmit = (e) => {

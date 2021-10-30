@@ -15,15 +15,24 @@ function ReviewFeedback() {
 
   return (
     <div>
-      <h2>Review Your Feedback</h2>
-      <p>Feeling: {feedback[0]}</p>
-      <br />
-      <p>Understanding: {feedback[1]}</p>
-      <br />
-      <p>Support: {feedback[2]}</p>
-      <br />
-      <p>Comments: {feedback[3]}</p>
-      <br />
+      <div>
+        <h2>Review Your Feedback</h2>
+      </div>
+
+      <div>
+        <p>Feeling: {feedback[0]}</p>
+        <br />
+
+        <p>Understanding: {feedback[1]}</p>
+        <br />
+
+        <p>Support: {feedback[2]}</p>
+        <br />
+
+        <p>Comments: {feedback[3]}</p>
+        <br />
+      </div>
+
       <Button onClick={handleSubmit} type="submit" variant="contained">
         Submit
       </Button>
