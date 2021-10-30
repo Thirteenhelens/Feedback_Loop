@@ -9,7 +9,7 @@ function FeelingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const feedback = useSelector((store) => store.feedback);
-  const [feeling, setFeeling] = useState(feedback.feeling);
+  const [feeling, setFeeling] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function FeelingForm() {
       payload: feeling,
     });
 
-    // history.push("/understanding");
+    history.push("/understanding");
     setFeeling("");
   };
 
@@ -37,6 +37,7 @@ function FeelingForm() {
           label="Feeling?"
           variant="standard"
           id="standard-basic"
+          helperText="Scale of 1-10"
           onChange={(e) => setFeeling(e.target.value)}
         />
         <br />

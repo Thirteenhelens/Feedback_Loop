@@ -9,7 +9,7 @@ function CommentForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const feedback = useSelector((store) => store.feedback);
-  const [comment, setComment] = useState(feedback.comment);
+  const [comment, setComment] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function CommentForm() {
       payload: comment,
     });
 
-    // history.push("/review");
+    history.push("/review");
     setComment("");
   };
 
@@ -29,16 +29,16 @@ function CommentForm() {
       <div>
         <h2>Any comments you want to leave?</h2>
       </div>
-      <TextField
-        value={comment}
-        variant="standard"
-        id="standard-basic"
-        label="CommentForm"
-        onChange={(e) => setComment(e.target.value)}
-      />
-      <br />
-      <br />
       <form onSubmit={handleSubmit}>
+        <TextField
+          value={comment}
+          variant="standard"
+          id="standard-basic"
+          label="CommentForm"
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <br />
+        <br />
         <Button
           type="submit"
           variant="outlined"
