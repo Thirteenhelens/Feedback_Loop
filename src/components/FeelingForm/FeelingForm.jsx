@@ -20,7 +20,7 @@ function FeelingForm() {
       payload: feeling,
     });
 
-    history.push("/understanding");
+    // history.push("/understanding");
     setFeeling("");
   };
 
