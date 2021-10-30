@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
-import { useDispatch, useSelector } from "react-redux";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+// Importing everything needed.
 
 function SupportForm() {
   const history = useHistory();
@@ -14,7 +15,7 @@ function SupportForm() {
     e.preventDefault();
     console.log(`Clicked Next`);
     dispatch({
-      type: "ADD_SUPPORT",
+      type: "ADD_INPUT",
       payload: support,
     });
 
@@ -30,7 +31,7 @@ function SupportForm() {
       <form onSubmit={handleSubmit}>
         <TextField
           required
-          type="number"
+          type="text"
           value={support}
           variant="standard"
           id="standard-basic"

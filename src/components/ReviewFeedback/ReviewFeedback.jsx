@@ -2,6 +2,7 @@ import "./ReviewFeedback.css";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
+// Importing everything needed.
 
 function ReviewFeedback() {
   const history = useHistory();
