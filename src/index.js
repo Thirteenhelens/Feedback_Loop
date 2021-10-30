@@ -7,7 +7,7 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-const feedback = (state = { feeling: '', understanding: '', support: '', comments: '' }, action) => {
+const feedback = (state = { feeling: '', understanding: '', support: '', comment: '' }, action) => {
     // switch (action.type) {
     //     case "ADD_FEELING":
     //         return feedback.feeling = action.payload
