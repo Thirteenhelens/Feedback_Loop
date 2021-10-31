@@ -9,6 +9,11 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 // Importing everything needed.
 
+// ADD AXIOS GET HERE FOR THE TABLE
+const restartForm = () => {
+    console.log('Restarting');
+}
+
 function SuccessPage() {
   const feedback = useSelector((store) => store.feedback);
   return (
@@ -39,7 +44,7 @@ function SuccessPage() {
       </div>
       <div className="restartFeedback">
         <h3>Thanks for your feedback!</h3>
-        <Button type="submit" variant="contained">
+        <Button onClick={restartForm} variant="contained">
           Leave new Feedback
         </Button>
       </div>

@@ -31,6 +31,7 @@ function CommentForm() {
       </div>
       <form onSubmit={handleSubmit}>
         <TextField
+        //Required is not here because the comment is not always necessary. 
           value={comment}
           variant="standard"
           id="standard-basic"

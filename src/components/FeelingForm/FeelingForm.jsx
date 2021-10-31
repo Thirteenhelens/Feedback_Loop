@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 //Importing everything needed.
 
+// This form component is the only one with (full) comments in it due to most of the form components being very similar, so enjoy! :)
+
 //Component function to make component display on DOM with all of it's functionality.
 function FeelingForm() {
   //Re-naming useHistory and useDispatch for ease of use later on.
