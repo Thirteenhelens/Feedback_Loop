@@ -12,7 +12,6 @@ function ReviewFeedback() {
     // ADD AXIOS POST HERE TO SAVE INFO
     e.preventDefault();
     console.log(`Clicked Submit`);
-    history.push("/success");
   };
 
   return (
