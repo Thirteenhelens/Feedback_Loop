@@ -32,7 +32,7 @@ function UnderstandingForm() {
       <form onSubmit={handleSubmit}>
         <TextField
           required
-          type="text"
+          type="number"
           value={understanding}
           label="Understanding?"
           variant="standard"

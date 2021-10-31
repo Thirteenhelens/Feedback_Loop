@@ -26,7 +26,7 @@ const feedback = (state = [], action) => {
 const pastFeedback = (state = [], action) => {
     switch (action.type) {
         case 'FEEDBACK':
-            return [...state, action.payload];
+            return action.payload
         default:
             return state;
     }

@@ -32,6 +32,22 @@ function App() {
       });
   };
 
+  const postFeedback = () => {
+    axios.post("/route/feedback", (req, res) => {
+      const feedback = req.body;
+      pool
+        .query(queryText)
+        .then((response) => {
+          res.sendStatus(201);
+          history.push("/success");
+        })
+        .catch((err) => {
+          console.log(`Error posting:`, err);
+          res.sendStatus(500);
+        });
+    });
+  };
+
   // Every time the page loads, I call fetchFeedback.
   useEffect(() => {
     fetchFeedback();

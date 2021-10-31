@@ -45,8 +45,8 @@ function FeelingForm() {
         <TextField
           //Required makes it so that you can't submit an empty input.
           required
-          //I chose text so that decimals and comments can be added.
-          type="text"
+          //I chose because it is on a scale of one to ten.
+          type="number"
           //Setting feeling to "" earlier comes in handy here!
           value={feeling}
           label="Feeling?"

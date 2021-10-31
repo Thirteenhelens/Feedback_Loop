@@ -31,7 +31,7 @@ function SupportForm() {
       <form onSubmit={handleSubmit}>
         <TextField
           required
-          type="text"
+          type="number"
           value={support}
           variant="standard"
           id="standard-basic"
