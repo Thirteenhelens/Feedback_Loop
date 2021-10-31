@@ -45,10 +45,10 @@ function SuccessPage({ fetchFeedback }) {
               <TableRow
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="left">{feedback[0].feeling}</TableCell>
-                <TableCell align="left">{feedback[0].understanding}</TableCell>
-                <TableCell align="left">{feedback[0].support}</TableCell>
-                <TableCell align="left">{feedback[0].comments}</TableCell>
+                <TableCell align="left">{feedback[2].feeling}</TableCell>
+                <TableCell align="left">{feedback[2].understanding}</TableCell>
+                <TableCell align="left">{feedback[2].support}</TableCell>
+                <TableCell align="left">{feedback[2].comments}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
