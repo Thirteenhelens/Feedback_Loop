@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
-import { useDispatch, useSelector } from "react-redux";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+// Importing everything needed.
 
 function CommentForm() {
   const history = useHistory();
@@ -15,7 +16,7 @@ function CommentForm() {
     console.log(`Clicked Next`);
 
     dispatch({
-      type: "ADD_COMMENT",
+      type: "ADD_INPUT",
       payload: comment,
     });
 
@@ -30,6 +31,7 @@ function CommentForm() {
       </div>
       <form onSubmit={handleSubmit}>
         <TextField
+        //Required is not here because the comment is not always necessary. 
           value={comment}
           variant="standard"
           id="standard-basic"

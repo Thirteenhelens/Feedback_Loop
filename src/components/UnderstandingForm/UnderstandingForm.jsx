@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
-import { useDispatch, useSelector } from "react-redux";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+// Importing everything needed.
 
 function UnderstandingForm() {
   const history = useHistory();
@@ -13,13 +14,14 @@ function UnderstandingForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Clicked Next`);
+
     dispatch({
-      type: "ADD_UNDERSTANDING",
+      type: "ADD_INPUT",
       payload: understanding,
     });
 
-    setUnderstanding("");
     history.push("/support");
+    setUnderstanding("");
   };
 
   return (
@@ -30,11 +32,11 @@ function UnderstandingForm() {
       <form onSubmit={handleSubmit}>
         <TextField
           required
-          type="number"
+          type="text"
           value={understanding}
+          label="Understanding?"
           variant="standard"
           id="standard-basic"
-          label="Understanding"
           helperText="Scale of 1-10"
           onChange={(e) => setUnderstanding(e.target.value)}
         />

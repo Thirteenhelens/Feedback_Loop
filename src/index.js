@@ -6,31 +6,26 @@ import { Provider } from 'react-redux';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+//Importing everything needed.
 
+//Making reducer to store the inputs of each form.
 const feedback = (state = [], action) => {
-    switch (action.type) {
-        case "ADD_FEELING":
-            return [...state, action.payload]
-
-        case "ADD_UNDERSTANDING":
-            return [...state, action.payload]
-
-        case "ADD_SUPPORT":
-            return [...state, action.payload]
-
-        case "ADD_COMMENT":
-            return [...state, action.payload]
+    //Adding the input payload send with each dispatch.
+    if (action.type === "ADD_INPUT") {
+        return [...state, action.payload]
     }
     return state;
 }
 
+//Making a store and keeping the reducer in it, so other components can reference it.
 const storeInstance = createStore(
     combineReducers({
         feedback
     }), applyMiddleware(
+        //Using logger to track state changes.
         logger
     )
-)
+);
 
 ReactDOM.render(
     <Provider store={storeInstance} >
