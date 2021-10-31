@@ -1,6 +1,8 @@
-import './SuccessPage.css'
+import "./SuccessPage.css";
+import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
@@ -9,13 +11,23 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 // Importing everything needed.
 
-// ADD AXIOS GET HERE FOR THE TABLE
-const restartForm = () => {
-    console.log('Restarting');
-}
+function SuccessPage({ fetchFeedback }) {
+    const dispatch = useDispatch();
+//   useEffect(() => {
+//     fetchFeedback();
+//   }, []);
 
-function SuccessPage() {
-  const feedback = useSelector((store) => store.feedback);
+  // ADD AXIOS GET HERE FOR THE TABLE
+  const restartForm = () => {
+    console.log("Restarting");
+    dispatch({
+        type: "CLEAR"
+    });
+  };
+
+  const feedback = useSelector((store) => store.pastFeedback);
+  console.log(feedback);
+
   return (
     <div>
       <div className="successTable">
@@ -33,10 +45,10 @@ function SuccessPage() {
               <TableRow
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="left">{feedback[0]}</TableCell>
-                <TableCell align="left">{feedback[1]}</TableCell>
-                <TableCell align="left">{feedback[2]}</TableCell>
-                <TableCell align="left">{feedback[3]}</TableCell>
+                <TableCell align="left">{feedback[0].feeling}</TableCell>
+                <TableCell align="left">{feedback[0].understanding}</TableCell>
+                <TableCell align="left">{feedback[0].support}</TableCell>
+                <TableCell align="left">{feedback[0].comments}</TableCell>
               </TableRow>
             </TableBody>
           </Table>

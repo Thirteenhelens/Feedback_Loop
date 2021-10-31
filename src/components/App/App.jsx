@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import axios from "axios";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import CommentForm from "../CommentForm/CommentForm";
 import FeelingForm from "../FeelingForm/FeelingForm";
@@ -11,16 +12,18 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 
 function App() {
+  // Renaming dispatch for ease of use later on.
   const dispatch = useDispatch();
 
   // Getting all of the previous reviews from the database
   const fetchFeedback = () => {
     axios
-      .get("/")
+      .get("/route/feedback")
       .then((response) => {
-        // Dispatching to ???
+        console.log(response.data);
+        // Dispatching to feedback, to update state.
         dispatch({
-          type: "???",
+          type: "FEEDBACK",
           payload: response.data,
         });
       })
@@ -29,7 +32,12 @@ function App() {
       });
   };
 
-  // Post route
+  // Every time the page loads, I call fetchFeedback.
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  // Post route will go here.
 
   return (
     <Router>

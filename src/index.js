@@ -11,9 +11,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 //Making reducer to store the inputs of each form.
 const feedback = (state = [], action) => {
     //Adding the input payload send with each dispatch.
+    //When the form is restarted, the current feedback state is emptied.
     switch(action.type) {
         case "ADD_INPUT":
             return [...state, action.payload];
+        case "CLEAR":
+            return [];
         default:
             return state;
     }
@@ -22,8 +25,8 @@ const feedback = (state = [], action) => {
 // Making a reducer that receives all previous reviews. 
 const pastFeedback = (state = [], action) => {
     switch (action.type) {
-        case '???':
-            return action.payload
+        case 'FEEDBACK':
+            return [...state, action.payload];
         default:
             return state;
     }
@@ -32,7 +35,8 @@ const pastFeedback = (state = [], action) => {
 //Making a store and keeping the reducer in it, so other components can reference it.
 const storeInstance = createStore(
     combineReducers({
-        feedback
+        feedback,
+        pastFeedback
     }), applyMiddleware(
         //Using logger to track state changes.
         logger
