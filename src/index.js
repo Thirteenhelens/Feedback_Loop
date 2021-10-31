@@ -11,10 +11,22 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 //Making reducer to store the inputs of each form.
 const feedback = (state = [], action) => {
     //Adding the input payload send with each dispatch.
-    if (action.type === "ADD_INPUT") {
-        return [...state, action.payload]
+    switch(action.type) {
+        case "ADD_INPUT":
+            return [...state, action.payload];
+        default:
+            return state;
     }
-    return state;
+}
+
+// Making a reducer that receives all previous reviews. 
+const pastFeedback = (state = [], action) => {
+    switch (action.type) {
+        case '???':
+            return action.payload
+        default:
+            return state;
+    }
 }
 
 //Making a store and keeping the reducer in it, so other components can reference it.

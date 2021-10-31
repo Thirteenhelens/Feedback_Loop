@@ -1,5 +1,7 @@
 import "./App.css";
 import React from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import CommentForm from "../CommentForm/CommentForm";
 import FeelingForm from "../FeelingForm/FeelingForm";
 import SupportForm from "../SupportForm/SupportForm";
@@ -9,6 +11,26 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 
 function App() {
+  const dispatch = useDispatch();
+
+  // Getting all of the previous reviews from the database
+  const fetchFeedback = () => {
+    axios
+      .get("/")
+      .then((response) => {
+        // Dispatching to ???
+        dispatch({
+          type: "???",
+          payload: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log("Error getting feedback ->", err);
+      });
+  };
+
+  // Post route
+
   return (
     <Router>
       <div className="App">
@@ -37,7 +59,7 @@ function App() {
         </Route>
 
         <Route path="/success">
-          <SuccessPage />
+          <SuccessPage fetchFeedback={fetchFeedback} />
         </Route>
       </div>
     </Router>
