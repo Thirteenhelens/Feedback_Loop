@@ -11,9 +11,43 @@ import ReviewFeedback from "../ReviewFeedback/ReviewFeedback";
 import { HashRouter as Router, Route } from "react-router-dom";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 
+
+import { Grid, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import CommentIcon from "@mui/icons-material/Comment";
 import TestForm from "../TestForm/TestForm";
 
 function App() {
+
+let currentView;
+
+const [value, setValue] = React.useState("feeling");
+
+const handleChange = (event, newValue) => {
+  setValue(newValue);
+};
+
+switch (value) {
+  case "feeling":
+    currentView = <FeelingForm />;
+    break;
+  case "understanding":
+    currentView = <UnderstandingForm />;
+    break;
+  case "support":
+    currentView = <SupportForm />;
+    break;
+  case "comments":
+    currentView = <CommentForm />;
+    break;
+  default:
+    console.log("error");
+    break;
+}
+
+
   // Renaming dispatch for ease of use later on.
   const dispatch = useDispatch();
 
@@ -66,9 +100,43 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
 
-        {/* <TestForm /> */}
-
         <Route exact path="/">
+          <Grid container>
+            <Grid item xs={12}>
+              <BottomNavigation
+                showLabels
+                value={value}
+                onChange={handleChange}
+              >
+                <BottomNavigationAction
+                  value="feeling"
+                  label="Feeling"
+                  icon={<SentimentVerySatisfiedIcon />}
+                />
+                <BottomNavigationAction
+                  value="understanding"
+                  label="Understanding"
+                  icon={<HelpOutlineIcon />}
+                />
+                <BottomNavigationAction
+                  value="support"
+                  label="Support"
+                  icon={<SupportAgentIcon />}
+                />
+                <BottomNavigationAction
+                  value="comments"
+                  label="Comments"
+                  icon={<CommentIcon />}
+                />
+              </BottomNavigation>
+            </Grid>
+            <Grid item xs={12}>
+              {currentView}
+            </Grid>
+          </Grid>
+        </Route>
+
+        {/* <Route exact path="/">
           <FeelingForm />
         </Route>
 
@@ -86,7 +154,7 @@ function App() {
 
         <Route path="/review">
           <ReviewFeedback />
-        </Route>
+        </Route> */}
 
         <Route path="/success">
           <SuccessPage fetchFeedback={fetchFeedback} />
