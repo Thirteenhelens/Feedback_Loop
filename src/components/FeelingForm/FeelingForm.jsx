@@ -1,12 +1,9 @@
-import { useState } from "react";
-import Button from "@mui/material/Button";
+import React from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import TextField from "@mui/material/TextField";
+import { Grid, Button, Rating, Typography } from "@mui/material";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 //Importing everything needed.
-
-// This form component is the only one with (full) comments in it due to most of the form components being very similar, so enjoy! :)
 
 //Component function to make component display on DOM with all of it's functionality.
 function FeelingForm() {
@@ -14,7 +11,7 @@ function FeelingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   //Creating the const feeling with ability to change it's state.
-  const [feeling, setFeeling] = useState("");
+  const [feeling, setFeeling] = React.useState(1);
 
   const handleSubmit = (e) => {
     //When the form is submitted, dont't refresh the DOM.
@@ -31,50 +28,36 @@ function FeelingForm() {
     //After dispatching, move to the UnderstandingForm page.
     history.push("/understanding");
     //Clearing input.
-    setFeeling("");
+    setFeeling(0);
   };
 
   //What to display on component page.
   return (
-    <div>
-      <div>
-        <h2>How are you feeling today?</h2>
-      </div>
-      {/* Form contains the text input as well as the button that causes the dispatch. */}
-      <form onSubmit={handleSubmit}>
-        <TextField
-          //Required makes it so that you can't submit an empty input.
-          required
-          //I chose because it is on a scale of one to ten.
-          type="number"
-          //Setting feeling to "" earlier comes in handy here!
-          value={feeling}
-          label="Feeling?"
-          //Text that shows in the input field.
-          variant="standard"
-          //This is a MUI key, makes the table a basic layout and color.
-          id="standard-basic"
-          //Another MUI key.
-          helperText="Scale of 1-10"
-          //Text that appears below input field.
-          onChange={(e) => setFeeling(e.target.value)}
-          //This makes the text in the textField equal to the feeling variable.
-        />
-        <br />
-        {/* D.I.Y. Margin to separate the textField and Button  */}
-        <br />
-        <Button
-          type="submit"
-          //Submit type in a form means that I can put the handleSubmit call in the form start.
-          variant="outlined"
-          //MUI styling.
-          startIcon={<ArrowForwardIosTwoToneIcon />}
-          //MUI Icon of an arrow for the next button.
-        >
-          Next
-        </Button>
-      </form>
-    </div>
+      <Grid container>
+        <Grid item xs={12} sx={{ p: 2 }}>
+          <Typography variant="h3">How are you feeling today?</Typography>
+        </Grid>
+        <Grid item xs={12} sx={{ p: 2 }}>
+          <Rating
+            size="large"
+            value={feeling}
+            name="simple-controlled"
+            onChange={(event, newValue) => {
+              setFeeling(newValue);
+              console.log(newValue);
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} sx={{ p: 2 }}>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            endIcon={<ArrowForwardIosTwoToneIcon />}
+          >
+            Next
+          </Button>
+        </Grid>
+      </Grid>
   );
 }
 

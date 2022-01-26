@@ -11,6 +11,8 @@ import ReviewFeedback from "../ReviewFeedback/ReviewFeedback";
 import { HashRouter as Router, Route } from "react-router-dom";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 
+import TestForm from "../TestForm/TestForm";
+
 function App() {
   // Renaming dispatch for ease of use later on.
   const dispatch = useDispatch();
@@ -55,6 +57,7 @@ function App() {
 
   // Post route will go here.
 
+  
   return (
     <Router>
       <div className="App">
@@ -62,6 +65,9 @@ function App() {
           <h1 className="App-title">Feedback!</h1>
           <h4>Don't forget it!</h4>
         </header>
+
+        {/* <TestForm /> */}
+
         <Route exact path="/">
           <FeelingForm />
         </Route>
