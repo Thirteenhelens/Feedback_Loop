@@ -1,12 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Grid, Button, Rating, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Importing everything needed.
 
-function UnderstandingForm() {
-  const history = useHistory();
+function UnderstandingForm({ setValue }) {
   const dispatch = useDispatch();
   const [understanding, setUnderstanding] = React.useState(1);
 
@@ -18,8 +16,7 @@ function UnderstandingForm() {
       type: "ADD_INPUT",
       payload: understanding,
     });
-
-    history.push("/support");
+    setValue("support");
     setUnderstanding(0);
   };
 

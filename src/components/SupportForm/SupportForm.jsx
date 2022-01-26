@@ -1,12 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Grid, Button, Rating, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Importing everything needed.
 
-function SupportForm() {
-  const history = useHistory();
+function SupportForm({ setValue }) {
   const dispatch = useDispatch();
   const [support, setSupport] = React.useState(1);
 
@@ -17,9 +15,8 @@ function SupportForm() {
       type: "ADD_INPUT",
       payload: support,
     });
-
     setSupport(1);
-    history.push("/comment");
+    setValue("comments");
   };
 
   return (

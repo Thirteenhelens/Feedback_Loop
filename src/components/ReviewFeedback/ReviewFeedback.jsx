@@ -28,42 +28,57 @@ function ReviewFeedback() {
       <Grid item xs={12} sx={{ p: 2 }}>
         <Typography variant="h3">Review your feedback</Typography>
       </Grid>
-      <Grid item xs={4} sx={{ p: 2 }}>
-        <Card>
-          <CardContent>
-            <Typography variant="subtitle1">Feeling</Typography>
-            <Typography variant="h5">{feedback[0]}</Typography>
-            <IconButton sx={{ mt: 1 }} onClick={() => history.push("/")}>
-              <EditIcon />
-            </IconButton>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={4} sx={{ p: 2 }}>
-        <Card>
-          <CardContent>
-            <Typography variant="subtitle1">Understanding</Typography>
-            <Typography variant="h5">{feedback[1]}</Typography>
-            <IconButton
-              sx={{ mt: 1 }}
-              onClick={() => history.push("/understanding")}
-            >
-              <EditIcon />
-            </IconButton>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={4} sx={{ p: 2 }}>
-        <Card>
-          <CardContent>
-            <Typography variant="subtitle1">Support</Typography>
-            <Typography variant="h5">{feedback[2]}</Typography>
-            <IconButton sx={{ mt: 1 }} onClick={() => history.push("/support")}>
-              <EditIcon />
-            </IconButton>
-          </CardContent>
-        </Card>
-      </Grid>
+      {feedback[0] ? (
+        <Grid item xs={4} sx={{ p: 2 }}>
+          <Card>
+            <CardContent>
+              <Typography variant="subtitle1">Feeling</Typography>
+              <Typography variant="h5">{feedback[0]}</Typography>
+              <IconButton sx={{ mt: 1 }} onClick={() => history.push("/")}>
+                <EditIcon />
+              </IconButton>
+            </CardContent>
+          </Card>
+        </Grid>
+      ) : (
+        <></>
+      )}
+      {feedback[1] ? (
+        <Grid item xs={4} sx={{ p: 2 }}>
+          <Card>
+            <CardContent>
+              <Typography variant="subtitle1">Understanding</Typography>
+              <Typography variant="h5">{feedback[1]}</Typography>
+              <IconButton
+                sx={{ mt: 1 }}
+                onClick={() => history.push("/understanding")}
+              >
+                <EditIcon />
+              </IconButton>
+            </CardContent>
+          </Card>
+        </Grid>
+      ) : (
+        <></>
+      )}
+      {feedback[2] ? (
+        <Grid item xs={4} sx={{ p: 2 }}>
+          <Card>
+            <CardContent>
+              <Typography variant="subtitle1">Support</Typography>
+              <Typography variant="h5">{feedback[2]}</Typography>
+              <IconButton
+                sx={{ mt: 1 }}
+                onClick={() => history.push("/support")}
+              >
+                <EditIcon />
+              </IconButton>
+            </CardContent>
+          </Card>
+        </Grid>
+      ) : (
+        <></>
+      )}
       {feedback[3] ? (
         <Grid item xs={12} sx={{ p: 2 }}>
           <Card>

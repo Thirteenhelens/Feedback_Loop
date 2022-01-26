@@ -1,14 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Grid, Button, Rating, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //Importing everything needed.
 
 //Component function to make component display on DOM with all of it's functionality.
-function FeelingForm() {
+function FeelingForm({ setValue }) {
   //Re-naming useHistory and useDispatch for ease of use later on.
-  const history = useHistory();
   const dispatch = useDispatch();
   //Creating the const feeling with ability to change it's state.
   const [feeling, setFeeling] = React.useState(1);
@@ -26,7 +24,7 @@ function FeelingForm() {
     });
 
     //After dispatching, move to the UnderstandingForm page.
-    history.push("/understanding");
+    setValue("understanding");
     //Clearing input.
     setFeeling(0);
   };

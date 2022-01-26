@@ -1,14 +1,10 @@
 import { useState } from "react";
-import Button from "@mui/material/Button";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import TextField from "@mui/material/TextField";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Button, Typography, TextField } from "@mui/material";
 // Importing everything needed.
 
-function CommentForm() {
-  const history = useHistory();
+function CommentForm({ setValue }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
 
@@ -20,8 +16,7 @@ function CommentForm() {
       type: "ADD_INPUT",
       payload: comment,
     });
-
-    history.push("/review");
+    setValue("review");
     setComment("");
   };
 

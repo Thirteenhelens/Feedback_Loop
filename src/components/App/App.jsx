@@ -1,52 +1,57 @@
-import "./App.css";
 import React from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+// Local Files Imports
+import "./App.css";
 import CommentForm from "../CommentForm/CommentForm";
 import FeelingForm from "../FeelingForm/FeelingForm";
 import SupportForm from "../SupportForm/SupportForm";
 import SuccessPage from "../SuccessPage/SuccessPage";
 import ReviewFeedback from "../ReviewFeedback/ReviewFeedback";
-import { HashRouter as Router, Route } from "react-router-dom";
 import UnderstandingForm from "../UnderstandingForm/UnderstandingForm";
 
+// Router Imports
+import { HashRouter as Router, Route } from "react-router-dom";
 
+// MUI Imports
 import { Grid, BottomNavigation, BottomNavigationAction } from "@mui/material";
-import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
+// MUI Icons Imports
+import PreviewIcon from "@mui/icons-material/Preview";
 import CommentIcon from "@mui/icons-material/Comment";
-import TestForm from "../TestForm/TestForm";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 
 function App() {
+  let currentView;
+  const [value, setValue] = React.useState("feeling");
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-let currentView;
-
-const [value, setValue] = React.useState("feeling");
-
-const handleChange = (event, newValue) => {
-  setValue(newValue);
-};
-
-switch (value) {
-  case "feeling":
-    currentView = <FeelingForm />;
-    break;
-  case "understanding":
-    currentView = <UnderstandingForm />;
-    break;
-  case "support":
-    currentView = <SupportForm />;
-    break;
-  case "comments":
-    currentView = <CommentForm />;
-    break;
-  default:
-    console.log("error");
-    break;
-}
-
+  switch (value) {
+    case "feeling":
+      currentView = <FeelingForm setValue={setValue} />;
+      break;
+    case "understanding":
+      currentView = <UnderstandingForm setValue={setValue} />;
+      break;
+    case "support":
+      currentView = <SupportForm setValue={setValue} />;
+      break;
+    case "comments":
+      currentView = <CommentForm setValue={setValue} />;
+      break;
+    case "review":
+      currentView = <ReviewFeedback setValue={setValue} />;
+      break;
+    default:
+      console.log("error");
+      break;
+  }
 
   // Renaming dispatch for ease of use later on.
   const dispatch = useDispatch();
@@ -91,7 +96,6 @@ switch (value) {
 
   // Post route will go here.
 
-  
   return (
     <Router>
       <div className="App">
@@ -128,6 +132,11 @@ switch (value) {
                   label="Comments"
                   icon={<CommentIcon />}
                 />
+                <BottomNavigationAction
+                  value="review"
+                  label="Review"
+                  icon={<PreviewIcon />}
+                />
               </BottomNavigation>
             </Grid>
             <Grid item xs={12}>
@@ -150,11 +159,11 @@ switch (value) {
 
         <Route path="/comment">
           <CommentForm />
-        </Route>
+        </Route> */}
 
         <Route path="/review">
           <ReviewFeedback />
-        </Route> */}
+        </Route>
 
         <Route path="/success">
           <SuccessPage fetchFeedback={fetchFeedback} />
