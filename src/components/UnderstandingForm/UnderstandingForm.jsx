@@ -1,15 +1,14 @@
-import { useState } from "react";
-import Button from "@mui/material/Button";
+import React from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import TextField from "@mui/material/TextField";
-import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+import { Grid, Button, Rating, Typography } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Importing everything needed.
 
 function UnderstandingForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [understanding, setUnderstanding] = useState("");
+  const [understanding, setUnderstanding] = React.useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,36 +20,37 @@ function UnderstandingForm() {
     });
 
     history.push("/support");
-    setUnderstanding("");
+    setUnderstanding(0);
   };
 
   return (
-    <div>
-      <div>
-        <h2>How well are you understanding the content?</h2>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          required
-          type="number"
+    <Grid container>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Typography variant="h3">
+          How well are you understanding the content?
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Rating
+          size="large"
           value={understanding}
-          label="Understanding?"
-          variant="standard"
-          id="standard-basic"
-          helperText="Scale of 1-10"
-          onChange={(e) => setUnderstanding(e.target.value)}
+          name="simple-controlled"
+          onChange={(event, newValue) => {
+            setUnderstanding(newValue);
+            console.log(newValue);
+          }}
         />
-        <br />
-        <br />
+      </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
         <Button
-          type="submit"
-          variant="outlined"
-          startIcon={<ArrowForwardIosTwoToneIcon />}
+          variant="contained"
+          onClick={handleSubmit}
+          endIcon={<ArrowForwardIosIcon />}
         >
           Next
         </Button>
-      </form>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 

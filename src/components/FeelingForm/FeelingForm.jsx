@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Grid, Button, Rating, Typography } from "@mui/material";
-import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //Importing everything needed.
 
 //Component function to make component display on DOM with all of it's functionality.
@@ -33,31 +33,31 @@ function FeelingForm() {
 
   //What to display on component page.
   return (
-      <Grid container>
-        <Grid item xs={12} sx={{ p: 2 }}>
-          <Typography variant="h3">How are you feeling today?</Typography>
-        </Grid>
-        <Grid item xs={12} sx={{ p: 2 }}>
-          <Rating
-            size="large"
-            value={feeling}
-            name="simple-controlled"
-            onChange={(event, newValue) => {
-              setFeeling(newValue);
-              console.log(newValue);
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} sx={{ p: 2 }}>
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            endIcon={<ArrowForwardIosTwoToneIcon />}
-          >
-            Next
-          </Button>
-        </Grid>
+    <Grid container>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Typography variant="h3">How are you feeling today?</Typography>
       </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Rating
+          size="large"
+          value={feeling}
+          name="simple-controlled"
+          onChange={(event, newValue) => {
+            setFeeling(newValue);
+            console.log(newValue);
+          }}
+        />
+      </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          endIcon={<ArrowForwardIosIcon />}
+        >
+          Next
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
 
