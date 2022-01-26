@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import TextField from "@mui/material/TextField";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
+import { Grid, Typography } from "@mui/material";
 // Importing everything needed.
 
 function CommentForm() {
@@ -25,30 +26,31 @@ function CommentForm() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Any comments you want to leave?</h2>
-      </div>
-      <form onSubmit={handleSubmit}>
+    <Grid container>
+      <Grid item xs={12} sx={{ p: 2 }}>
+        <Typography variant="h3">Any Comments you want to leave?</Typography>
+      </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
         <TextField
-        //Required is not here because the comment is not always necessary. 
+          //Required is not here because the comment is not necessary.
+          multiline
+          maxRows={4}
           value={comment}
           variant="standard"
-          id="standard-basic"
           label="CommentForm"
           onChange={(e) => setComment(e.target.value)}
         />
-        <br />
-        <br />
+      </Grid>
+      <Grid item xs={12} sx={{ p: 2 }}>
         <Button
-          type="submit"
-          variant="outlined"
-          startIcon={<ArrowForwardIosTwoToneIcon />}
+          variant="contained"
+          onClick={handleSubmit}
+          endIcon={<ArrowForwardIosTwoToneIcon />}
         >
           Next
         </Button>
-      </form>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 

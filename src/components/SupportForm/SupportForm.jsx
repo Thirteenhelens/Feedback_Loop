@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 function SupportForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [support, setSupport] = React.useState(0);
+  const [support, setSupport] = React.useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ function SupportForm() {
       payload: support,
     });
 
-    setSupport(0);
+    setSupport(1);
     history.push("/comment");
   };
 
