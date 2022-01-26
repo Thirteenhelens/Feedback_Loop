@@ -1,12 +1,9 @@
-
-// import TextField from "@mui/material/TextField";
-// import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
-// Importing everything needed.
 import React from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Grid, Button, Rating, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+// Importing everything needed.
 
 function SupportForm() {
   const history = useHistory();
@@ -26,7 +23,6 @@ function SupportForm() {
   };
 
   return (
-    // <div>
     <Grid container>
       <Grid item xs={12} sx={{ p: 2 }}>
         <Typography variant="h3">How well are you being supported?</Typography>
@@ -51,31 +47,6 @@ function SupportForm() {
           Next
         </Button>
       </Grid>
-      {/* <div>
-        <h2>How well are you being supported?</h2>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          required
-          type="number"
-          value={support}
-          variant="standard"
-          id="standard-basic"
-          label="SupportForm"
-          helperText="Scale of 1-10"
-          onChange={(e) => setSupport(e.target.value)}
-        />
-        <br />
-        <br />
-        <Button
-          type="submit"
-          variant="outlined"
-          startIcon={<ArrowForwardIosTwoToneIcon />}
-        >
-          Next
-        </Button>
-      </form>
-    </div> */}
     </Grid>
   );
 }
